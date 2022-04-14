@@ -20,7 +20,7 @@ test('renders the contact form header', () => {
 test('renders ONE error message if user enters less then 5 characters into firstname.', async () => {
     render(<ContactForm />);
 
-    const firstName = screen.getByLabelText(/First Name*/i);
+    const firstName = screen.getByLabelText(/First Name\*/i);
     userEvent.type(firstName, "123");
 
     const errorMessage = await screen.findAllByTestId('error'); // await for state change// always use FIND when using await
@@ -43,10 +43,10 @@ test('renders THREE error messages if user enters no values into any fields.', a
 test('renders ONE error message if user enters a valid first name and last name but no email.', async () => {
     render(<ContactForm />);
 
-    const firstName = screen.getByLabelText(/First Name*/i);
+    const firstName = screen.getByLabelText(/First Name\*/i);
     userEvent.type(firstName, "12345");
 
-    const lastName = screen.getByLabelText(/Last Name*/i);
+    const lastName = screen.getByLabelText(/Last Name\*/i);
     userEvent.type(lastName, "12345");
 
     const submitButton =  screen.getByRole("button");
@@ -61,7 +61,7 @@ test('renders ONE error message if user enters a valid first name and last name 
 test('renders "email must be a valid email address" if an invalid email is entered', async () => {
     render(<ContactForm />)
 
-    const email = screen.getByLabelText(/email*/i);
+    const email = screen.getByLabelText(/email\*/i);
     userEvent.type(email, "12345")
 
     const errorMessage = await screen.findByText(/email must be a valid email address/i);
@@ -82,13 +82,13 @@ test('renders "lastName is a required field" if an last name is not entered and 
 test('renders all firstName, lastName and email text when submitted. Does NOT render message if message is not submitted.', async () => {
     render(<ContactForm />);
 
-    const firstName = screen.getByLabelText(/First Name*/i);
+    const firstName = screen.getByLabelText(/First Name\*/i);
     userEvent.type(firstName, "123455");
 
-    const lastName = screen.getByLabelText(/Last Name*/i);
+    const lastName = screen.getByLabelText(/Last Name\*/i);
     userEvent.type(lastName, "12345");
 
-    const email = screen.getByLabelText(/email*/i);
+    const email = screen.getByLabelText(/email\*/i);
     userEvent.type(email, "12345@gmail.com");
 
     const submitButton =  screen.getByRole("button");
@@ -117,13 +117,13 @@ test('renders all fields text when all fields are submitted.', async () => {
     const message = screen.getByLabelText(/message/i);
     userEvent.type(message, "message display")
 
-    const firstName = screen.getByLabelText(/First Name*/i);
+    const firstName = screen.getByLabelText(/First Name\*/i);
     userEvent.type(firstName, "123455");
 
-    const lastName = screen.getByLabelText(/Last Name*/i);
+    const lastName = screen.getByLabelText(/Last Name\*/i);
     userEvent.type(lastName, "12345");
 
-    const email = screen.getByLabelText(/email*/i);
+    const email = screen.getByLabelText(/email\*/i);
     userEvent.type(email, "12345@gmail.com");
 
     const submitButton =  screen.getByRole("button");
