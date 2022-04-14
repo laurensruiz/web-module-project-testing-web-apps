@@ -5,12 +5,12 @@ import userEvent from '@testing-library/user-event';
 import ContactForm from './ContactForm';
 
 test('renders without errors', () => {
-    render(<ContactForm />)
+    render(<ContactForm />);
 });
 
 test('renders the contact form header', () => {
     render(<ContactForm />);
-    const headerElement = screen.queryByText(/Contact Form/i) //console.log to check
+    const headerElement = screen.queryByText(/Contact Form/i) //console.log to check // not query by ALL because it returns an array
 
     expect(headerElement).toBeInTheDocument();
     expect(headerElement).toBeTruthy();
@@ -98,7 +98,7 @@ test('renders all firstName, lastName and email text when submitted. Does NOT re
         const firstNameDisplay = screen.queryByText("123455");
         const lastNameDisplay = screen.queryByText("12345");
         const emailDisplay = screen.queryByText("12345@gmail.com");
-        const messageDisplay = screen.queryByTestId('messageDisplay');
+        const messageDisplay = screen.queryByTestId('message');
         
         expect(firstNameDisplay).toBeInTheDocument();
         expect(lastNameDisplay).toBeInTheDocument();
